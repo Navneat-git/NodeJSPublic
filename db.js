@@ -1,0 +1,33 @@
+const mongoose=require('mongoose');
+
+//Define the MongoDB connection URL
+const mongoURL='mongodb://localhost:27017/testmongo';
+
+//Setup MongoDB connection
+//useNewUrlParser and useUnifiedTopology options are deprecated in the latest MongoDB Node.js driver versions. These options were necessary in earlier versions but have since become default behavior and are no longer needed.
+// mongoose.connect(mongoURL,{
+//     useNewURLParser:true,
+//     useUnifiedTopology:true
+// });  
+
+mongoose.connect(mongoURL);
+
+//Get the default connection
+//Mongoose maintains a default connection object representing the MongoDB Connection.
+const db=mongoose.connection;
+
+//Default event listners for database connection
+db.on('connected',()=>{
+    console.log('DB connected successfully');
+});
+
+db.on('error',(err)=>{
+    console.log('DB connection error:- ',err);
+});
+
+db.on('disconnected',()=>{
+    console.log('DB disconnected successfully');
+});
+
+//Export the DB connection
+module.exports=db;
