@@ -1,7 +1,8 @@
 const mongoose=require('mongoose');
-
+require('dotenv').config();
 //Define the MongoDB connection URL
-const mongoURL='mongodb://localhost:27017/testmongo';
+// const mongoURL=process.env.MONGODB_URL_LOCAL; // it is local mongodb database
+const mongoURL =process.env.MONGODB_URL_CLOUD; // it is mongodb atlas cloud dabase url
 
 //Setup MongoDB connection
 //useNewUrlParser and useUnifiedTopology options are deprecated in the latest MongoDB Node.js driver versions. These options were necessary in earlier versions but have since become default behavior and are no longer needed.
