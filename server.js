@@ -11,7 +11,9 @@ require('dotenv').config();
 const PORT=process.env.PORT || 3000;
 
 const productRoutes=require('./routes/productRoutes');
+const homeRoutes=require('./routes/homeRoutes');
 app.use('/item',productRoutes);
+app.use('/',homeRoutes);
 
 console.log('server file is available');
 
